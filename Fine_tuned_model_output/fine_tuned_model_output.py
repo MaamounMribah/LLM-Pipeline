@@ -33,15 +33,17 @@ def download_model(bucket_name, source_blob_prefix, destination_dir):
 
 #service_account_key_content = os.getenv('GCP_SA_KEY')
 service_account_key_content = os.environ['GCP_SA_KEY']
+
 if not service_account_key_content:
-    raise ValueError("The 'GCP_SA_KEY' environment variable must be set.")
+    raise ValueError("The 'GCP_SA_KEY_CONTENT' environment variable must be set.")
+
 
 # Write the service account key content to a temporary file
 with open('service_account.json', 'w') as sa_file:
     sa_file.write(service_account_key_content)
 
 # Set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the temporary file
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'service_account.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.abspath('service_account.json')
 
 # Now you can initialize the GCP client
 storage_client = storage.Client()

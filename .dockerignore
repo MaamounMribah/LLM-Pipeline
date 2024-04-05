@@ -3,3 +3,4 @@ pipeline.py
 README.md
 .github/
 .env
+service_account.json

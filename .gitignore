@@ -1,2 +1,3 @@
 bart-finetuned/
 .env
+service_account.json
