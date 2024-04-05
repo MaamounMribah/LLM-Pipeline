@@ -44,7 +44,7 @@ jobs:
         
       - name: Compile and Deploy Kubeflow Pipeline        
         env:
-          KFP_HOST: ${{ secrets.KFP_HOST }}
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          KFP_HOST: ${{ secrets.KFP_HOST }}
         run: |
           python3 pipeline.py
